@@ -1,13 +1,60 @@
 <!doctype html>
+<!-- Document type declaration - tells browser this is HTML5 -->
+
 <html lang="en">
+  <!-- Root HTML element, lang="en" specifies English language -->
+
   <head>
+    <!-- Head section - metadata and resources (not visible on page) -->
+
     <meta charset="UTF-8" />
+    <!-- Character encoding - supports all languages and special characters
+         UTF-8 is the universal standard -->
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Favicon - small icon shown in browser tab
+         Points to /public/favicon.svg (Vite serves /public as root) -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Viewport meta tag - critical for responsive design
+         width=device-width: page width matches device width
+         initial-scale=1.0: no zoom on page load
+         Makes site work properly on mobile devices -->
+
     <title>movie-reviews-frontend</title>
+    <!-- Page title shown in browser tab -->
   </head>
+
   <body>
+    <!-- Body section - visible page content -->
+
     <div id="root"></div>
+    <!-- Empty div where React app will mount
+         React finds this element and injects your entire app here
+         main.tsx does: createRoot(document.getElementById('root')!) -->
+
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Load and execute main.tsx as an ES module
+         type="module" enables import/export syntax
+         Vite processes this .tsx file:
+         1. Compiles TypeScript to JavaScript
+         2. Transforms JSX to function calls
+         3. Bundles dependencies
+         4. Serves to browser
+         This is your app's entry point! -->
   </body>
 </html>
+
+<!-- How this works:
+1. Browser loads index.html
+2. Browser sees <script src="/src/main.tsx">
+3. Vite dev server compiles main.tsx → JavaScript
+4. main.tsx imports React and App component
+5. main.tsx calls createRoot() to mount React app in #root div
+6. React renders your entire app inside <div id="root">
+7. Final DOM looks like:
+   <div id="root">
+     <header class="rt-header">...</header>
+     <div class="container">...</div>
+   </div>
+-->

@@ -1,7 +1,37 @@
 {
+  // ROOT TypeScript Configuration File
+  // This is the base config that references other config files
+  // TypeScript uses "project references" for better organization
+
+  "compilerOptions": {
+    // Compiler options that apply to ALL referenced projects
+
+    "esModuleInterop": true,
+    // Enables better compatibility with CommonJS modules
+    // Allows: import React from "react" instead of import * as React
+
+    "skipLibCheck": true
+    // Skip type checking of declaration files (.d.ts)
+    // Speeds up compilation - we trust library types are correct
+  },
+
   "files": [],
+  // This config doesn't directly compile any files
+  // It just references other configs
+
   "references": [
+    // Project references - TypeScript will use these configs
+
     { "path": "./tsconfig.app.json" },
+    // Config for your app code (src folder)
+
     { "path": "./tsconfig.node.json" }
+    // Config for Node.js tools (vite.config.ts)
   ]
 }
+
+// Why split configs?
+// - Different code has different needs
+// - App code runs in browser → needs DOM types
+// - Build tools run in Node.js → needs Node types
+// - Keeps configs clean and focused
